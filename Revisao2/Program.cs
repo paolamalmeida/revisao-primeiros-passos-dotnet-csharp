@@ -19,12 +19,35 @@ namespace Revisao2
                         Aluno aluno1 = new Aluno();
                         var aluno = aluno1;
                         aluno.Nome = Console.ReadLine();
+                        
 
-                        Console.WriteLine("Informe a nota do aluno:");
+                        Console.WriteLine("Informe a nota 1 do aluno:");
 
-                        if (decimal.TryParse(Console.ReadLine(), out decimal nota))
+                        if (decimal.TryParse(Console.ReadLine(), out decimal Nota1))
                         {
-                            aluno.Nota = nota;
+                            aluno.Nota1 = Nota1;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Valor da nota deve ser decimal");
+                        }
+
+                        Console.WriteLine("Informe a nota 2 do aluno:");
+
+                        if (decimal.TryParse(Console.ReadLine(), out decimal Nota2))
+                        {
+                            aluno.Nota2 = Nota2;
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Valor da nota deve ser decimal");
+                        }
+
+                        Console.WriteLine("Informe a nota 3 do aluno:");
+
+                        if (decimal.TryParse(Console.ReadLine(), out decimal Nota3))
+                        {
+                            aluno.Nota3 = Nota3;
                         }
                         else
                         {
@@ -36,12 +59,20 @@ namespace Revisao2
 
                         break;
                     case "2":
+                        decimal MediaDoAluno;
 
                         foreach(var a in alunos)
                         {
                             if (!string.IsNullOrEmpty(a.Nome))
                         {    
-                          Console.WriteLine($"ALUNO: {a.Nome} - NOTA: {a.Nota}");  
+                          Console.WriteLine($"ALUNO: {a.Nome} - NOTA 1: {a.Nota1}, NOTA 2: {a.Nota2}, NOTA 3: {a.Nota3}");
+                          Console.WriteLine();
+
+                         MediaDoAluno = (a.Nota1 + a.Nota2 + a.Nota3) / 3;
+
+                            Console.WriteLine($"Média: {MediaDoAluno}");
+                            Console.WriteLine();
+
                         }}
                         break;
                     case "3":
@@ -52,7 +83,7 @@ namespace Revisao2
                         {
                             if(!string.IsNullOrEmpty(alunos[i].Nome))
                             {
-                                notaTotal = notaTotal + alunos[i].Nota;
+                                notaTotal = notaTotal + alunos[i].Nota1 + alunos[i].Nota2 + alunos[i].Nota3;
                                 nrAlunos++;
                             }
                         }
